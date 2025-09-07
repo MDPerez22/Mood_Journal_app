@@ -8,17 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let currentDate = Date()
+    
+    let formatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateStyle = .medium
+        f.timeStyle = .short
+        return f
+    }()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack {
+                Text("\(formatter.string(from: currentDate))")
+                Text("Welcome! How do you feel?")
+                NavigationLink (destination: MoodSelectionScreen()) {
+                    VStack {
+                        Image(systemName: "square.and.pencil.circle.fill")
+                            .imageScale(.large)
+                            .foregroundStyle(.tint)
+                        Text("Edit Mood")
+                    }
+                }
+                Text("Today's mood is (placeholder)")
+            }
+            .padding()
         }
-        .padding()
     }
 }
-
 #Preview {
     ContentView()
 }
