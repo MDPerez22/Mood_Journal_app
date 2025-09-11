@@ -12,7 +12,6 @@ struct Mood_Journal_AppApp: App {
     @StateObject var AppState = appState()
     var body: some Scene {
         WindowGroup {
-            //ContentView()
             TabView {
                     MoodSelectionScreen()
                         .tabItem {Label("One", systemImage: "1.circle")}
